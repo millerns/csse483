@@ -1,0 +1,20 @@
+Lab 2 - Part A. Reading
+CSSE 483
+Nick Miller
+
+
+You load the layout resource (the xml) from your application code by calling << setContentView() >> , passing it the reference to your layout resource. 
+
+The plus sign in @+id/ means that this is << a new resource name that must be created and added to the resources >>.
+
+The previous question referred to R.java. Go to any app you’ve created and open up the gen (generated) folder to find R.java. Note that it has a number of nested classes containing constants. What is the value of R.layout.activity_main? << 0x7f030000 >>
+
+Name as many other (besides layouts) familiar elements you see in R.java.
+
+<< All of the strings and colors that were declared in the resource files are present in R.java. The views that were given ids are also present. >> 
+
+Note that sometimes if you have an error in your xml, it will prohibit R.java from being generated, which can cause all sorts of problems with the constants not being defined. So look for errors in the xml first if get such errors.
+ 
+You can declare UI elements in XML or in code. There are clear advantages to creating them in XML (remember the MVC paradigm?). Think a bit and give an example when you should declare one in code:
+
+<< If we allowed the user to define the number of buttons in LightsOut, we would programatically create and place the buttons. >>
