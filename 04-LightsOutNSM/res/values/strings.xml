@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LightsOutNSM</string>
+    <string name="light_off">0</string>
+    <string name="light_on">1</string>
+    <string name="instructions">Make the buttons match</string>
+    <string name="new_game">New Game</string>
+    <string name="win">You won!</string>
+
+</resources>
