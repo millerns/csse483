@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LightsOutMenuNSM</string>
+    <string name="main_title">Lights Out</string>
+    <string name="play_button_start">Play with 7 buttons</string>
+    <string name="play_button_format">Play with %d buttons </string>
+    <string name="change_num_buttons_button">Change number of buttons</string>
+    <string name="about_button">About Lights Out</string>
+    <string name="exit_button">Exit</string>
+    <string name="title_activity_about">AboutActivity</string>
+    <string name="about_description">Clicking a button toggles the state of that button and any neighboring buttons.  The goal is to make all the buttons match.</string>
+
+</resources>
