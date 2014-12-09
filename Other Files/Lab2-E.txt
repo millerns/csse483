@@ -1,0 +1,9 @@
+Lab 2 - Part E. Reading
+CSSE 483
+Nick Miller
+
+FrameLayout is designed to block out an area on the screen to display a single item. You can add multiple children to a FrameLayout, and control their position within the FrameLayout by assigning << gravity >> to each child. 
+
+Children are drawn in a stack, with the << most recently added child on top >>
+
+The size of the frame layout is << the size of its largest child plus padding >>
