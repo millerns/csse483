@@ -10,6 +10,11 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+	public static final String LOM = "LOM";
+	public static final String KEY_NUM_BUTTONS = "KEY_NUM_BUTTONS";
+	private int mNumButtons = 7;
+	private static final int REQUEST_CODE_CHANGE_BUTTON = 1;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -34,6 +39,11 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.change_num_buttons_button:
 			Log.d("LOM", "Change number of buttons button");
+			Intent changeNumButtonsIntent = new Intent(this,
+					ChangeNumButtonsActivity.class);
+			changeNumButtonsIntent.putExtra(KEY_NUM_BUTTONS, mNumButtons);
+			startActivityForResult(changeNumButtonsIntent,
+					REQUEST_CODE_CHANGE_BUTTON);
 			break;
 		case R.id.about_button:
 			Log.d("LOM", "About button");
@@ -46,6 +56,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		default:
 			Log.d("LOM", "Unknown");
 		}
-
 	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_CODE_CHANGE_BUTTON
+				&& resultCode == RESULT_OK) {
+			mNumButtons = data.getIntExtra(KEY_NUM_BUTTONS, 7);
+			// update the play string with the proper number of buttons
+			// String s = getString()
+		}
+	}
+
 }

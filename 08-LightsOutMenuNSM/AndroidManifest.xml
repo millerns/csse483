@@ -27,6 +27,10 @@
             android:label="@string/title_activity_about"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
+        <activity
+            android:name=".ChangeNumButtonsActivity"
+            android:label="@string/title_activity_change_num_buttons" >
+        </activity>
     </application>
 
 </manifest>
