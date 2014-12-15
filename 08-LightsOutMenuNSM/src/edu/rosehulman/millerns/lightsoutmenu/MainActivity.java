@@ -15,13 +15,15 @@ public class MainActivity extends Activity implements OnClickListener {
 	private int mNumButtons = 7;
 	private static final int REQUEST_CODE_CHANGE_BUTTON = 1;
 
+	private Button mPlayButton;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		Button playButton = (Button) findViewById(R.id.play_button);
-		playButton.setOnClickListener(this);
+		mPlayButton = (Button) findViewById(R.id.play_button);
+		mPlayButton.setOnClickListener(this);
 		Button changeNumButtonsButton = (Button) findViewById(R.id.change_num_buttons_button);
 		changeNumButtonsButton.setOnClickListener(this);
 		Button aboutButton = (Button) findViewById(R.id.about_button);
@@ -64,7 +66,8 @@ public class MainActivity extends Activity implements OnClickListener {
 				&& resultCode == RESULT_OK) {
 			mNumButtons = data.getIntExtra(KEY_NUM_BUTTONS, 7);
 			// update the play string with the proper number of buttons
-			// String s = getString()
+			String s = getString(R.string.play_button_format, mNumButtons);
+			mPlayButton.setText(s);
 		}
 	}
 
