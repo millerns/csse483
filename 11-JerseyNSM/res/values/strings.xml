@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JerseyNSM</string>
+    <string name="action_settings">Settings</string>
+    <string name="jersey_description">Jersey</string>
+    <string name="edit_button">Edit</string>
+    <string name="name_label">Name</string>
+    <string name="number_label">Number</string>
+    <string name="name_hint">FISHER</string>
+    <string name="number_hint">42</string>
+    <string name="ok_button">OK</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="jersey_toggle_red">Red Jersey</string>
+    <string name="jersey_toggle_blue">Blue Jersey</string>
+    <string name="jersey_name">FISHER</string>
+    <string name="jersey_number">42</string>
+    <string name="title_activity_jersey_info">Jersey Info</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>

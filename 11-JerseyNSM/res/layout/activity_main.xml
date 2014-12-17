@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.rosehulman.millerns.jersey.MainActivity"
+    android:background="#fff" >
+
+    <ImageView
+        android:id="@+id/jersey"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/jersey_description"
+        android:src="@drawable/red_jersey" />
+
+    <Button
+        android:id="@+id/edit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/jersey"
+        android:layout_alignRight="@+id/jersey"
+        android:text="@string/edit_button" />
+
+    <TextView
+        android:id="@+id/jersey_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/jersey"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="266dp"
+        android:text="@string/jersey_name"
+        android:textColor="#fff"
+        android:textSize="50sp" />
+
+    <TextView
+        android:id="@+id/jersey_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/jersey_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="23dp"
+        android:text="@string/jersey_number"
+        android:textColor="#fff"
+        android:textSize="120sp" />
+
+</RelativeLayout>
