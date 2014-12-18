@@ -36,8 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/number_hint"
-        android:inputType="number" />
+        android:hint="@string/number_hint" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +48,8 @@
             android:id="@+id/jersey_color_toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/jersey_toggle_red" />
+            android:textOff="@string/jersey_toggle_blue"
+            android:textOn="@string/jersey_toggle_red" />
 
         <Button
             android:id="@+id/cancel_button"
