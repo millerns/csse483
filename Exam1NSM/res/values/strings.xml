@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Exam1NSM</string>
+    <string name="title">Memory Tool by Nick Miller</string>
+    <string name="record">Record a button sequence</string>
+    <string name="pressed">You pressed</string>
+    <string name="reset">Reset</string>
+
+</resources>
