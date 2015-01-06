@@ -16,7 +16,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private static final int REQUEST_CODE_CHANGE_BUTTON = 1;
 
 	private Button mPlayButton;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,6 +38,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.play_button:
 			Log.d("LOM", "Play Button");
+			Intent playIntent = new Intent(this, LightsOutActivity.class);
+			playIntent.putExtra(KEY_NUM_BUTTONS, mNumButtons);
+			startActivity(playIntent);
 			break;
 		case R.id.change_num_buttons_button:
 			Log.d("LOM", "Change number of buttons button");
