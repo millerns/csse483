@@ -7,7 +7,9 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
@@ -124,9 +126,22 @@ public class HelloDialogs extends Activity {
 			public Dialog onCreateDialog(Bundle savedInstanceState) {
 				AlertDialog.Builder builder = new AlertDialog.Builder(
 						getActivity());
-				builder.setTitle(R.string.toast_or_exit_question);
+				builder.setTitle(R.string.learning_methods_question);
 				builder.setIcon(R.drawable.ic_dialog_alert);
-				builder.setNegativeButton(android.R.string.cancel, null);
+				builder.setSingleChoiceItems(R.array.Learning_methods_array,
+						-1, new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								String[] methods = getResources()
+										.getStringArray(
+												R.array.Learning_methods_array);
+								Toast.makeText(getActivity(),
+										"Yeah for " + methods[which],
+										Toast.LENGTH_SHORT).show();
+							}
+						});
+
 				return builder.create();
 			}
 		};
@@ -134,6 +149,24 @@ public class HelloDialogs extends Activity {
 	}
 
 	protected void showRoseDialog() {
-		// TODO: Show appropriate dialog
+		DialogFragment df = new DialogFragment() {
+			@Override
+			public View onCreateView(LayoutInflater inflater,
+					ViewGroup container, Bundle savedInstanceState) {
+				View roseView = inflater.inflate(R.layout.dialog_rose, null);
+				Button doneButton = (Button) roseView
+						.findViewById(R.id.done_button);
+				doneButton.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						dismiss();
+					}
+				});
+
+				return roseView;
+
+			}
+		};
+		df.show(getFragmentManager(), "");
 	}
 }
