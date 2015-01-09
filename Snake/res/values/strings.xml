@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2007 The Android Open Source Project
+<!--
+     Copyright (C) 2007 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -11,13 +12,22 @@
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
-     limitations under the License.
+     limitations under the License.
 -->
 
 <resources>
-  <string name="app_name">Snake</string>
-  <string name="mode_ready">Snake\nPress Up To Play</string>
-  <string name="mode_pause">Paused\nPress Up To Resume</string>
-  <string name="mode_lose">Game Over\nScore: %1$d \nPress Up To Play</string>
-  <string name="resume">Resume</string>
+
+    <string name="app_name">Snake</string>
+    <string name="mode_ready">Snake\nPress Up To Play</string>
+    <string name="mode_pause">Paused\nPress Up To Resume</string>
+    <string name="mode_lose">Game Over\nScore: %1$d \nPress Up To Play</string>
+    <string name="resume">Resume</string>
+    <string name="left_turn">Left</string>
+    <string name="right_turn">Right</string>
+    <string name="change_speed">Change Speed</string>    
+    <string name="slow">Slow</string>
+    <string name="medium">Medium</string>
+    <string name="fast">Fast</string>
+    <string name="settings">Settings</string>
+
 </resources>

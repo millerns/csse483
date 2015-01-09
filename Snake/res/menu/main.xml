@@ -4,8 +4,43 @@
     <item
         android:id="@+id/resume"
         android:icon="@drawable/ic_menu_rotate"
-        android:showAsAction="ifRoom"
+        android:showAsAction="never"
         android:title="@string/resume">
+    </item>
+    <item
+        android:id="@+id/left"
+        android:icon="@drawable/ic_left_arrow"
+        android:showAsAction="always"
+        android:title="@string/left_turn">
+    </item>
+    <item
+        android:id="@+id/right"
+        android:icon="@drawable/ic_right_arrow"
+        android:showAsAction="always"
+        android:title="@string/right_turn">
+    </item>
+    <item
+        android:id="@+id/change_speed"
+        android:showAsAction="never"
+        android:title="@string/change_speed">
+        <menu>
+            <group android:checkableBehavior="single" >
+                <item
+                    android:id="@+id/slow"
+                    android:title="@string/slow"/>
+                <item
+                    android:id="@+id/medium"
+                    android:title="@string/medium"/>
+                <item
+                    android:id="@+id/fast"
+                    android:title="@string/fast"/>
+            </group>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/settings"
+        android:showAsAction="never"
+        android:title="@string/settings">
     </item>
 
 </menu>
