@@ -2,6 +2,7 @@ package edu.rosehulman.millerns.lightsoutmenu;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements OnClickListener {
 
+	private static final String PREFS = "PREFS";
 	public static final String LOM = "LOM";
 	public static final String KEY_NUM_BUTTONS = "KEY_NUM_BUTTONS";
 	private int mNumButtons = 7;
@@ -24,6 +26,14 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		mPlayButton = (Button) findViewById(R.id.play_button);
 		mPlayButton.setOnClickListener(this);
+		if (savedInstanceState != null)
+			mNumButtons = savedInstanceState.getInt(KEY_NUM_BUTTONS);
+
+		// SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
+		// mNumButtons = prefs.getInt(KEY_NUM_BUTTONS, 7);
+		mPlayButton
+				.setText(getString(R.string.play_button_format, mNumButtons));
+
 		Button changeNumButtonsButton = (Button) findViewById(R.id.change_num_buttons_button);
 		changeNumButtonsButton.setOnClickListener(this);
 		Button aboutButton = (Button) findViewById(R.id.about_button);
@@ -32,6 +42,21 @@ public class MainActivity extends Activity implements OnClickListener {
 		exitButton.setOnClickListener(this);
 
 	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putInt(KEY_NUM_BUTTONS, mNumButtons);
+	}
+
+	// @Override
+	// protected void onPause() {
+	// super.onPause();
+	// SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
+	// SharedPreferences.Editor editor = prefs.edit();
+	// editor.putInt(KEY_NUM_BUTTONS, mNumButtons);
+	// editor.commit();
+	// }
 
 	@Override
 	public void onClick(View v) {
@@ -57,6 +82,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.exit_button:
 			Log.d("LOM", "Exit button");
+			finish();
 			break;
 		default:
 			Log.d("LOM", "Unknown");
