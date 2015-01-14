@@ -2,6 +2,7 @@ package edu.rosehulman.millerns.blackjacktrainer;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
@@ -94,7 +95,81 @@ public class Blackjack extends Activity {
 				.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						// TODO: Show the Make your move dialog
+						// DONE: Show the Make your move dialog
+						DialogFragment df = new DialogFragment() {
+							public Dialog onCreateDialog(
+									Bundle savedInstanceState) {
+								AlertDialog.Builder builder = new AlertDialog.Builder(
+										getActivity());
+								builder.setItems(mRound.legalMovesAsString(),
+										new DialogInterface.OnClickListener() {
+
+											@Override
+											public void onClick(
+													DialogInterface dialog,
+													int which) {
+												mActionSelected = mRound
+														.legalMovesAsString()[which];
+
+												DialogFragment df = new DialogFragment() {
+													public Dialog onCreateDialog(
+															Bundle savedInstanceState) {
+														AlertDialog.Builder builder = new AlertDialog.Builder(
+																getActivity());
+														mNumRounds++;
+														if (mActionSelected.equals(mRound
+																.getCorrectPlayerActionAsString())) {
+															mNumCorrect++;
+															builder.setIcon(R.drawable.correct_move);
+															builder.setTitle(R.string.correct);
+															builder.setMessage(getString(
+																	R.string.percentage_correct,
+																	mNumCorrect,
+																	mNumRounds,
+																	(double) mNumCorrect
+																			/ mNumRounds
+																			* 100.0));
+														} else {
+															builder.setIcon(R.drawable.incorrect_move);
+															builder.setTitle(R.string.incorrect);
+															String advice = getString(
+																	R.string.coach_advice,
+																	mRound.toString(),
+																	mRound.getCorrectPlayerActionAsString());
+															String percentage = getString(
+																	R.string.percentage_correct,
+																	mNumCorrect,
+																	mNumRounds,
+																	(double) mNumCorrect
+																			/ mNumRounds
+																			* 100.0);
+															builder.setMessage(advice
+																	+ "\n"
+																	+ percentage);
+														}
+														builder.setPositiveButton(
+																R.string.ok,
+																new DialogInterface.OnClickListener() {
+																	@Override
+																	public void onClick(
+																			DialogInterface dialog,
+																			int which) {
+																		initNewRound();
+																		dismiss();
+																	}
+																});
+														return builder.create();
+													}
+												};
+												df.show(getFragmentManager(),
+														"advice");
+											}
+										});
+								builder.setTitle(R.string.make_your_move);
+								return builder.create();
+							}
+						};
+						df.show(getFragmentManager(), "move");
 					}
 				});
 		((Button) findViewById(R.id.skip_button))
@@ -128,7 +203,7 @@ public class Blackjack extends Activity {
 				.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						// TODO: Show the cheat dialog
+						// DONE: Show the cheat dialog
 						DialogFragment df = new DialogFragment() {
 							public Dialog onCreateDialog(
 									Bundle savedInstanceState) {
@@ -138,9 +213,8 @@ public class Blackjack extends Activity {
 										.getLayoutInflater();
 								builder.setTitle(getString(
 										R.string.coach_advice,
-										this.mRound.toString(),
-										this.mRound
-												.getCorrectPlayerActionAsString()));
+										mRound.toString(),
+										mRound.getCorrectPlayerActionAsString()));
 								builder.setView(inflater.inflate(
 										R.layout.cheat_matrix, null));
 								return builder.create();
