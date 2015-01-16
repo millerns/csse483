@@ -48,8 +48,10 @@ public class MainActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Toast.makeText(MainActivity.this,
-						"You pressed row " + position, Toast.LENGTH_SHORT)
+				Toast.makeText(
+						MainActivity.this,
+						getString(R.string.toast_text)
+								+ adapter.getItem(position), Toast.LENGTH_SHORT)
 						.show();
 			}
 		});

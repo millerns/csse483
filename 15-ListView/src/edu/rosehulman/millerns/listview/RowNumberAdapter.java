@@ -11,9 +11,11 @@ public class RowNumberAdapter extends BaseAdapter {
 
 	private Context mContext;
 	private int mNumRows = 5;
+	private String[] mMonths;
 
 	public RowNumberAdapter(Context context) {
 		mContext = context;
+		mMonths = context.getResources().getStringArray(R.array.month_names);
 	}
 
 	@Override
@@ -23,7 +25,7 @@ public class RowNumberAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		return null;
+		return mMonths[position % 12];
 	}
 
 	@Override
@@ -33,19 +35,19 @@ public class RowNumberAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		TextView view;
+		RowView view;
 		if (convertView == null) {
 			// make one
-			view = new TextView(mContext);
-			view.setTextSize(24);
+			view = new RowView(mContext);
 		} else {
 			// use one passed in
-			view = (TextView) convertView;
+			view = (RowView) convertView;
 		}
 		// customize it
-		view.setText("Row " + position);
-		int color = Color.rgb(10 * position, 255 - (10 * position), 100);
-		view.setTextColor(color);
+		view.setLeftText((position + 1) + ".");
+		view.setRightText(mMonths[position % 12]);
+		// int color = Color.rgb(10 * position, 255 - (10 * position), 100);
+		// view.setTextColor(color);
 		return view;
 	}
 

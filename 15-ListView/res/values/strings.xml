@@ -3,5 +3,8 @@
 
     <string name="app_name">ListViewNSM</string>
     <string name="hello_world">Hello world!</string>
+    <string name="january">January</string>
+    <string name="one">"1. "</string>
+    <string name="toast_text">"You pressed "</string>
 
 </resources>
