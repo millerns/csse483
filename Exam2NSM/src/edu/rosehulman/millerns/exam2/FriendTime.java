@@ -11,6 +11,12 @@ public class FriendTime {
 		mMinute = minute;
 	}
 
+	public FriendTime(String s) {
+		mName = s.substring(0, s.indexOf("&"));
+		mHour = Integer.parseInt(s.substring(s.indexOf("&")+1, s.indexOf(":")));
+		mMinute = Integer.parseInt(s.substring(s.indexOf(":")+1));
+	}
+
 	@Override
 	public String toString() {
 		return mName + " - " + mHour + ":" + mMinute;
@@ -21,7 +27,15 @@ public class FriendTime {
 	}
 
 	public String getTime() {
-		return mHour + ":" + mMinute;
+		String hour = "" + mHour;
+		if (mHour < 10) {
+			hour = "0" + hour;
+		}
+		String minute = "" + mMinute;
+		if (mMinute < 10) {
+			minute = "0" + minute;
+		}
+		return hour + ":" + minute;
 	}
 
 }
