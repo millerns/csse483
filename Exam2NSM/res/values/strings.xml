@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Exam2NSM</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="time">12:51</string>
+    <string name="name">Bob</string>
+    <string name="name_hint">Enter the person\'s name</string>
+    <string name="friend_message">I\'m happy :) to know</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="settings">Settings</string>
+
+</resources>
