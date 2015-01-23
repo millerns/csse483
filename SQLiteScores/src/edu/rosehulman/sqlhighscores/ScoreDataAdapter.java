@@ -1,6 +1,8 @@
 package edu.rosehulman.sqlhighscores;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -48,6 +50,32 @@ public class ScoreDataAdapter {
 	public void close() {
 		// Close the database
 		mDatabase.close();
+	}
+
+	private ContentValues getContentValuesFromScore(Score score) {
+		ContentValues row = new ContentValues();
+		row.put(KEY_NAME, score.getName());
+		row.put(KEY_SCORE, score.getScore());
+		return row;
+	}
+
+	/**
+	 * Add score to the table
+	 * 
+	 * @param score
+	 * @return id of the inserted row or -1 if failed
+	 */
+	public long addScore(Score score) {
+		ContentValues row = getContentValuesFromScore(score);
+		long rowId = mDatabase.insert(TABLE_NAME, null, row);
+		score.setId(rowId);
+		return rowId;
+	}
+
+	public Cursor getScoresCursor() {
+		String[] projection = new String[] { KEY_ID, KEY_NAME, KEY_SCORE };
+		return mDatabase.query(TABLE_NAME, projection, null, null, null, null,
+				KEY_SCORE + " DESC");
 	}
 
 	private static class ScoreDbHelper extends SQLiteOpenHelper {
