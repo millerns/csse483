@@ -89,7 +89,7 @@ public class ScoresListActivity extends ListActivity {
 		mCursorAdapter = new SimpleCursorAdapter(this,
 				R.layout.score_list_item, cursor, fromColumns, toTextViews, 0);
 		setListAdapter(mCursorAdapter);
-		
+
 		registerForContextMenu(getListView());
 
 	}
@@ -189,6 +189,8 @@ public class ScoresListActivity extends ListActivity {
 		// Collections.sort(mScores);
 		// mScoreAdapter.notifyDataSetChanged();
 		mScoreDataAdapter.addScore(s);
+		Cursor cursor = mScoreDataAdapter.getScoresCursor();
+		mCursorAdapter.changeCursor(cursor);
 	}
 
 	/**
@@ -199,7 +201,7 @@ public class ScoresListActivity extends ListActivity {
 	 */
 	private Score getScore(long id) {
 		// return mScores.get((int) id);
-		return null;
+		return mScoreDataAdapter.getScore(id);
 	}
 
 	/**
@@ -213,9 +215,14 @@ public class ScoresListActivity extends ListActivity {
 		if (mSelectedId == NO_ID_SELECTED) {
 			Log.e(SLS, "Attempt to update with no score selected.");
 		}
-		Score selectedScore = getScore(mSelectedId);
-		selectedScore.setName(s.getName());
-		selectedScore.setScore(s.getScore());
+		s.setId((int) mSelectedId);
+		mScoreDataAdapter.updateScore(s);
+		Cursor cursor = mScoreDataAdapter.getScoresCursor();
+		mCursorAdapter.changeCursor(cursor);
+
+		// Score selectedScore = getScore(mSelectedId);
+		// selectedScore.setName(s.getName());
+		// selectedScore.setScore(s.getScore());
 		// Collections.sort(mScores);
 		// mScoreAdapter.notifyDataSetChanged();
 	}
@@ -227,6 +234,10 @@ public class ScoresListActivity extends ListActivity {
 	 *            Index of the score in the data storage mechanism
 	 */
 	private void removeScore(long id) {
+		mScoreDataAdapter.removeScore(id);
+		Cursor cursor = mScoreDataAdapter.getScoresCursor();
+		mCursorAdapter.changeCursor(cursor);
+		
 		// mScores.remove((int) id);
 		// Collections.sort(mScores);
 		// mScoreAdapter.notifyDataSetChanged();

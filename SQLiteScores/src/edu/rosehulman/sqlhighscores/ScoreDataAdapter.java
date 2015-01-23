@@ -32,8 +32,6 @@ public class ScoreDataAdapter {
 		CREATE_STATEMENT = sb.toString();
 	}
 
-	// TODO: Implement a SQLite database
-
 	private SQLiteOpenHelper mOpenHelper;
 	private SQLiteDatabase mDatabase;
 
@@ -70,6 +68,39 @@ public class ScoreDataAdapter {
 		long rowId = mDatabase.insert(TABLE_NAME, null, row);
 		score.setId(rowId);
 		return rowId;
+	}
+
+	public Score getScore(long id) {
+		String[] projection = new String[] { KEY_ID, KEY_NAME, KEY_SCORE };
+		String selection = KEY_ID + " = " + id;
+		Cursor c = mDatabase.query(TABLE_NAME, projection, selection, null,
+				null, null, null, null);
+		if (c != null && c.moveToFirst()) {
+			return getScoreFromCursor(c);
+		}
+		return null;
+	}
+
+	public void updateScore(Score score) {
+		ContentValues row = getContentValuesFromScore(score);
+		String selection = KEY_ID + " = " + score.getId();
+		mDatabase.update(TABLE_NAME, row, selection, null);
+	}
+
+	public boolean removeScore(long id) {
+		return mDatabase.delete(TABLE_NAME, KEY_ID + " = " + id, null) > 0;
+	}
+	
+	public boolean removeScore(Score s) {
+		return removeScore(s.getId());
+	}	
+	
+	private Score getScoreFromCursor(Cursor c) {
+		Score s = new Score();
+		s.setId(c.getInt(c.getColumnIndexOrThrow(KEY_ID)));
+		s.setName(c.getString(c.getColumnIndexOrThrow(KEY_NAME)));
+		s.setScore(c.getInt(c.getColumnIndexOrThrow(KEY_SCORE)));
+		return s;
 	}
 
 	public Cursor getScoresCursor() {
