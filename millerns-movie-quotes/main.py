@@ -25,7 +25,7 @@ from models import MovieQuote
 # Jinja environment instance necessary to use Jinja templates.
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.dirname(__file__)), autoescape=True)
 
-# Generic key used to group MoviewQuotes into an entity group.
+# Generic key used to group MovieQuotes into an entity group.
 PARENT_KEY = ndb.Key("Entity", 'moviequote_root')
 
 class MainHandler(webapp2.RequestHandler):

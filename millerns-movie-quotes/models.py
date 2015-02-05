@@ -7,7 +7,7 @@ from endpoints_proto_datastore.ndb.model import EndpointsModel
 from google.appengine.ext import ndb
 
 class MovieQuote(EndpointsModel):
-    ''' a movie quote and the title of the movie from which it came '''
+    ''' A movie quote and the title of the movie from which it came '''
     _message_fields_schema = ("entityKey", "quote", "movie", "last_touch_date_time")
     quote = ndb.StringProperty()
     movie = ndb.StringProperty()
