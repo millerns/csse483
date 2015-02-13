@@ -20,8 +20,6 @@ class MovieQuotesApi(protorpc.remote.Service):
     def moviequote_list(self, query):
         """ Return all the quotes """
         return query
-    
-
         
     @MovieQuote.method(request_fields=("entityKey",), path="moviequote/delete/{entityKey}", http_method="DELETE", name="moviequote.delete")
     def moviequote_delete(self, request):
